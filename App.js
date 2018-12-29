@@ -9,6 +9,7 @@ export default class App extends React.Component {
       calculationText: '',
     }
     this.operations = ['DEL','C','+', '-', '*', '/'];
+    this.nums = [[1,2,3,],[4,5,6],[7,8,9],['.',0,'=']]
 
   }
 
@@ -53,6 +54,7 @@ export default class App extends React.Component {
       case 'C':
         this.setState({resultText: '', calculationText: ''})
         break
+
       case '+':
       case '-':
       case '*':
@@ -71,18 +73,17 @@ export default class App extends React.Component {
 
   render() {
     let rows = [];
-    let nums = [[1,2,3,],[4,5,6],[7,8,9],['.',0,'=']]
     for (let i = 0; i < 4; i++) {
       let row = [];
       for (let j = 0; j < 3; j++) {
         row.push(
-          <TouchableOpacity key={nums[i][j]} onPress={() => this.buttonPressed(nums[i][j])} style={styles.btn}>
-            <Text style={styles.btnText}>{nums[i][j]}</Text>
+          <TouchableOpacity key={this.nums[i][j]} onPress={() => this.buttonPressed(this.nums[i][j])} style={styles.btn}>
+            <Text style={styles.btnText}>{this.nums[i][j]}</Text>
           </TouchableOpacity>
         );
       }
       rows.push(
-        <View key={nums[i]} style={styles.row}>{row}</View>
+        <View key={this.nums[i]} style={styles.row}>{row}</View>
       )
     }
 

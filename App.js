@@ -8,7 +8,7 @@ export default class App extends React.Component {
       resultText: '',
       calculationText: '',
     }
-    this.operations = ['DEL','+', '-', '*', '/'];
+    this.operations = ['DEL','C','+', '-', '*', '/'];
 
   }
 
@@ -49,6 +49,9 @@ export default class App extends React.Component {
         let text = this.state.resultText.split('')
         text.pop();
         this.setState({resultText: text.join('')})
+        break
+      case 'C':
+        this.setState({resultText: '', calculationText: ''})
         break
       case '+':
       case '-':
